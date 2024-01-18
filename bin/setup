@@ -1,0 +1,13 @@
+#!/bin/sh
+
+rootDir=$(pwd)
+[ ! -f "${rootDir}/bin/setup" ] && echo "in the wrong directory must be in root of the project" && exit 1
+
+repoDir="${rootDir}/repos"
+[ ! -d "${repoDir}" ] && mkdir ${repoDir}
+
+cd "$repoDir"
+[ ! -d 'data_entry' ] && (git clone git@github.com:bfurner27/earthquakes_poc_data.git -o data_entry || cd "$rootDir")
+[ ! -d 'frontend' ] && (git clone git@github.com:bfurner27/earthquake_poc_frontend.git -o frontend || cd "$rootDir")
+[ ! -d 'backend' ] && (git clone git@github.com:bfurner27/earthquake_poc_backend.git -o backend || cd "$rootDir")
+cd "$rootDir"

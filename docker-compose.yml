@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  backend:
+    image: backend:build
+    restart: always
+    env_file:
+      - ./repos/backend/config/default.env
+      - ./repos/backend/config/override.env
+    ports:
+      - 2401:8080
+    volumes:
+      - "./repos/backend:/app"
+    build:
+      target: base
+      context: ./repos/backend/
+      dockerfile: ./Dockerfile
+    depends_on:
+      db:
+        condition: service_started
+  frontend:
+    image: frontend:build
+    restart: always
+    env_file:
+      - ./repos/backend/config/default.env
+      - ./repos/backend/config/override.env
+    ports:
+      - 2402:4200
+    volumes:
+      - "./repos/frontend:/app"
+    build:
+      target: base
+      context: ./repos/frontend/
+      dockerfile: ./Dockerfile
+    depends_on:
+      db:
+        condition: service_started
+  data:
+    image: data:build
+    volumes:
+      - "./repos/data_entry:/app"
+    build:
+      target: base
+      context: ./repos/data_entry
+      dockerfile: ./Dockerfile
+    depends_on:
+      backend:
+        condition: service_started
+  db:
+    image: db:build
+    command: "-h *"
+    restart: always
+    ports:
+      - 5501:5432
+    build:
+      target: base
+      context: ./docker/db
+      dockerfile: ./Dockerfile
+    environment:
+      POSTGRES_PASSWORD: nightlife
+      POSTGRES_DB: poc
