@@ -12,8 +12,12 @@
 1. run `docker compose build`
 1. run `docker compose up -d`
 
-1. seed the db by extracting the zipped data into the directory repos/data
-1. run the data_entry linux container `docker compose run data bash`
-1. run the command `python3 update.py --file-path data/Countries.geojson --data-type country`
-1. run the command `python3 update.py --file-path data/Earthquakes.geojson --data-type earthquake`
-\* currently deduping is not supported so ensure you only run the above commands once to initially seed the db
+# See Frontend
+1. in browser navigate to http://localhost:2402/
+
+# See Backend Docs
+1. in browser navigate to http://localhost:2401/docs
+
+# Initially Seed The DB
+1. follow instructions [here](https://github.com/bfurner27/earthquakes_poc_data/blob/main/README.md)
+* only run the seed scripts once since deduping is not yet supported in the db (it will upload duplicates if you run it more than once)
