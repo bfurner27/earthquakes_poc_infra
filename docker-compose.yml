@@ -29,7 +29,9 @@ services:
     ports:
       - 2402:4200
     volumes:
-      - "./repos/frontend:/app"
+      - "./repos/frontend/src:/app/src"
+      - "./repos/frontend/package.json:/app/package.json"
+      - "./repos/frontend/package-lock.json:/app/package-lock.json"
     build:
       target: base
       context: ./repos/frontend/
