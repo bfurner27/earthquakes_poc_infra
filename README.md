@@ -4,9 +4,9 @@
 1. (linux/mac/wsl) from the cloned repo directory run the command `bin/setup`
 1. (windows) create a folder in root of project called repos
 1. (windows) run each of the following git commands
-1. (windows) `git clone git@github.com:bfurner27/earthquakes_poc_data.git -o data_entry`
-1. (windows) `git clone git@github.com:bfurner27/earthquake_poc_frontend.git -o frontend`
-1. (windows) `git clone git@github.com:bfurner27/earthquake_poc_backend.git -o backend`
+1. (windows) `git clone git@github.com:bfurner27/earthquakes_poc_data.git data_entry`
+1. (windows) `git clone git@github.com:bfurner27/earthquake_poc_frontend.git frontend`
+1. (windows) `git clone git@github.com:bfurner27/earthquake_poc_backend.git backend`
 
 # Running project
 1. run `docker compose build`
