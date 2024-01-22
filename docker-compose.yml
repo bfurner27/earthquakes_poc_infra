@@ -10,7 +10,9 @@ services:
     ports:
       - 2401:8080
     volumes:
-      - "./repos/backend:/app"
+      - "./repos/backend/src:/app/src"
+      - "./repos/backend/package.json:/app/package.json"
+      - "./repos/backend/package-lock.json:/app/package-lock.json"
     build:
       target: base
       context: ./repos/backend/
